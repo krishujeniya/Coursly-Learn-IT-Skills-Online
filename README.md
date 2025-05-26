@@ -11,7 +11,7 @@
 
    <a href="https://bit.ly/Coursly"><img src="assets/img/mylogob.png" alt="Logo"  height="180"></a>
  
-<h1 align="center"> <a href="https://bit.ly/Coursly">Coursly-The E Learning Platform</a></h1>
+<h1 align="center"> <a href="https://bit.ly/Coursly">Coursly - Learn IT Skills Online</a></h1>
 </div>
 
 <details>
