@@ -1,0 +1,346 @@
+:root {
+    --primary-color: #6a11cb;   /* From your main.css */
+    --secondary-color: #2575fc; /* From your main.css */
+    --accent-color: #00c6ff;    /* From your main.css */
+    --dark-color: #121212;      /* From your main.css */
+    --light-color: #ffffff;     /* From your main.css */
+    --text-color-dark: #333333;
+    --certificate-bg: rgb(165, 220, 241);
+    --border-color-light: #e0e0e0;
+    --border-color-medium: #c0c0c0;
+    --border-color-dark: #808080; /* Gold-ish color for accents */
+    --gold-accent: #b08d57; /* Or #c09248, #d4af37 */
+}
+
+body.certificate-page-body, .certificate-page-container { /* Apply dark background to the page holding the certificate */
+    background-color: var(--dark-color); /* Uses dark theme from main.css */
+    color: var(--light-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif; /* Fallback font */
+}
+
+.certificate-wrapper {
+    width: 100%;
+    max-width: 800px; /* A4-ish aspect ratio: 800px width implies ~1130px height, or control height below */
+    /* For a fixed A4-like proportion (scaled down):
+       width: 21cm; height: 29.7cm; (for print)
+       Can be scaled: e.g., width: 800px; height: 1131px; */
+    background-color: var(--certificate-bg);
+    color: var(--text-color-dark);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    overflow: hidden; /* Ensures border effects are contained */
+    margin-bottom: 30px;
+}
+
+.certificate-border {
+    border: 1px solid var(--border-color-medium); /* Outer simple border */
+    margin: 15px; /* Space for the outer border */
+    padding: 5px; /* Space for the inner decorative border */
+    border-image: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color)) 1;
+    /* Or a more traditional gold:
+    border: 10px solid transparent;
+    border-image: url('path/to/ornate-border.svg') 30 stretch; /* If you have an SVG border */
+    /* Or simpler double border */
+    border-style: double;
+    border-width: 8px;
+    border-color: var(--gold-accent);
+    background-color: var(--certificate-bg); /* Ensure content area is white */
+}
+
+.certificate-content {
+    padding: 30px 40px;
+    text-align: center;
+    position: relative; /* For any absolute positioned elements inside */
+}
+
+/* Header */
+.certificate-header {
+    margin-bottom: 25px; /* Reduced margin */
+}
+
+.logo {
+    max-width: 150px; /* MODIFIED: Smaller logo */
+    height: auto;
+    margin-bottom: 15px;
+    padding-right: 10px;
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6em; 
+    color: var(--primary-color);
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Body */
+.certificate-body {
+    margin-bottom: 25px; /* Reduced margin */
+}
+
+.presented-to {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.05em;
+    margin-bottom: 8px;
+    color: var(--text-color-dark);
+}
+
+.recipient-name {
+    font-family: 'Dancing Script', cursive; 
+    font-size: 2.8em; 
+    color: var(--gold-accent);
+    margin: 8px 0 12px 0;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.achievement-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95em; /* Slightly smaller */
+    line-height: 1.55;
+    margin: 0 auto 12px auto;
+    max-width: 90%;
+    color: #555;
+}
+
+.course-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.7em; 
+    color: var(--secondary-color);
+    margin: 0 0 12px 0;
+    font-weight: 700;
+}
+
+.completion-date {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95em;
+    color: var(--text-color-dark);
+    margin-bottom: 15px;
+}
+
+/* Footer */
+.certificate-footer {
+    margin-top: 25px; /* Reduced margin */
+    border-top: 1px solid var(--border-color-light);
+    padding-top: 20px; /* Reduced padding */
+}
+
+.signatures-container {
+    display: flex;
+    /* MODIFIED for two signatures - distribute space around them */
+    justify-content: space-around; /* Or space-evenly if preferred */
+    align-items: flex-start; 
+    margin-bottom: 15px;
+    flex-wrap: wrap; 
+}
+
+.signature-block {
+    flex-basis: 45%; /* Give each block ample space, allowing for two main blocks */
+    max-width: 220px; /* Control max width of each signature block */
+    min-width: 180px; 
+    padding: 0 5px;
+    text-align: center;
+    margin-bottom: 10px; /* Add margin for wrapping cases */
+}
+/* Remove the middle spacer block from HTML if you only have two signatures
+   If you keep it for 3-signature potential, and only 2 are active, they might look off.
+   For exactly two, use:
+   .signature-block:nth-child(1) { margin-right: auto; } /* Pushes first to left */
+/* .signature-block:nth-child(2) { margin-left: auto; } /* Pushes second to right */
+/* OR if the empty middle block is removed from HTML: */
+/* .signatures-container .signature-block { flex: 1; } /* This will spread them more */
+
+
+.signature-img {
+    max-height: 55px; 
+    width: auto;
+    max-width: 140px; 
+    display: block;
+    margin: 0 auto 4px auto;
+}
+
+.signature-line {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color-medium);
+    margin: 4px 0;
+}
+
+.signer-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.85em;
+    margin: 4px 0 2px 0;
+    color: var(--text-color-dark);
+}
+
+.signer-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.75em;
+    color: #777;
+    margin: 0;
+}
+
+.certificate-id, .issuing-authority {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.7em; /* Slightly smaller */
+    color: #888;
+    margin-top: 4px;
+}
+.issuing-authority {
+    margin-top: 12px;
+    font-weight: 600;
+    color: #666;
+}
+
+/* From your main.css */
+.btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+}
+
+.btn-gradient-primary:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
+}
+
+.btn-outline-light { /* This is a good candidate for the "Back" button */
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-outline-light:hover {
+    background: white;
+    color: var(--dark-color);
+}
+
+/* Buttons */
+.certificate-actions {
+    text-align: center;
+    margin-top: 20px; /* Space above buttons if certificate is not full height */
+}
+
+.certificate-actions .btn { /* Using classes from your main.css for consistency */
+    margin: 0 10px;
+    padding: 0.75rem 1.8rem; /* Slightly larger buttons */
+    font-size: 0.9rem;
+    min-width: 180px;
+}
+.certificate-actions .btn i {
+    margin-right: 8px;
+}
+
+/* Print Styles */
+@media print {
+    body, .certificate-page-container {
+        background-color: var(--light-color) !important; /* Ensure white background for printing */
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        -webkit-print-color-adjust: exact; /* Ensures background colors and images print in Chrome/Safari */
+        color-adjust: exact; /* Standard */
+    }
+
+    .certificate-wrapper {
+        width: 100%; /* A4 landscape: 29.7cm width, 21cm height */
+        /* For portrait: width: 21cm; height: 29.7cm; */
+        /* Using percentages to fill the page as much as possible */
+        max-width: none;
+        margin: 0 auto;
+        box-shadow: none;
+        border-radius: 0;
+        border: none; /* Remove screen border */
+    }
+    .certificate-border { /* Adjust border for print if needed */
+        margin: 2mm; /* Small margin for printing */
+        padding: 1mm;
+        border-width: 6px; /* Slightly thinner for print if preferred */
+    }
+
+    .certificate-content {
+        padding: 20px; /* Reduce padding slightly for print if needed */
+    }
+
+    .certificate-actions {
+        display: none !important; /* Hide buttons */
+    }
+
+    /* Optional: adjust font sizes for print */
+    .main-title { font-size: 2.2em !important; }
+    .recipient-name { font-size: 2.4em !important; }
+    .course-name { font-size: 1.5em !important; }
+    .achievement-text, .presented-to, .completion-date { font-size: 0.9em !important; }
+    .signer-name { font-size: 0.8em !important; }
+    .signer-title { font-size: 0.7em !important; }
+    .certificate-id, .issuing-authority { font-size: 0.65em !important;}
+
+
+    /* Ensure colors print correctly */
+    .main-title { color: var(--primary-color) !important; }
+    .course-name { color: var(--secondary-color) !important; }
+    .recipient-name { color: var(--gold-accent) !important; }
+    .logo {
+        filter: grayscale(0%) !important; /* Ensure logo prints in color if it's not by default */
+    }
+}
+
+/* Responsive Adjustments for smaller screens */
+@media (max-width: 850px) {
+    .certificate-wrapper {
+        max-width: 95%;
+        margin-top: 20px;
+    }
+    .certificate-border{
+        margin: 10px;
+    }
+    .certificate-content {
+        padding: 20px;
+    }
+    .main-title { font-size: 2.2em; }
+    .recipient-name { font-size: 2.5em; }
+    .course-name { font-size: 1.5em; }
+    .signature-block { margin-bottom: 20px; } 
+}
+
+@media (max-width: 600px) {
+    .logo { max-width: 120px; margin-bottom: 15px; }
+    .main-title { font-size: 1.8em; }
+    .recipient-name { font-size: 2em; }
+    .course-name { font-size: 1.3em; }
+    .achievement-text, .presented-to, .completion-date { font-size: 0.9em; }
+    
+    /* For two signatures, they will stack now */
+    .signatures-container { 
+        flex-direction: column; 
+        align-items: center; 
+    }
+    .signature-block { 
+        width: 100%; 
+        max-width: 250px; 
+        margin-bottom: 25px;
+        flex-basis: auto; /* Reset flex-basis for stacking */
+    }
+    .certificate-actions .btn {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+    }
+}
