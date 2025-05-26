@@ -28,8 +28,8 @@ function SendOTP($email_recipient_param, $conn_param = null) { // Added $conn_pa
     if ($conn_param) $conn = $conn_param; // Allow overriding global $conn
 
     $otp = mt_rand(100000, 999999);
-    $myemail = "aidrago0021@gmail.com"; // Your sending email
-    $myemailpass = "vcicrhjckbhgfwqj"; // Your email app password
+    $myemail = ""; // Your sending email
+    $myemailpass = ""; // Your email app password
 
     $to = $email_recipient_param;
     $subject = "Coursly - OTP Verification";
